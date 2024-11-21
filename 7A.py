@@ -9,4 +9,7 @@ for i in range(8):
 
   k += s == "B" * 8
 
+if k == 16:
+  k = 8
+
 print(k)
