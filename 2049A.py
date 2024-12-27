@@ -15,4 +15,7 @@ for _ in range(int(input())):
     if k > 0:
       ans += 1
       
-  print(ans)
+  if ans > 2:
+    print(2)
+  else:
+    print(ans)
