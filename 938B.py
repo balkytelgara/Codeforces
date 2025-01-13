@@ -1,19 +1,17 @@
 n = int(input())
-a = list(map(int, input().split()))
+a = [1] + list(map(int, input().split())) + [pow(10, 6)]
 
-ans = 0
+ans = pow(10, 6)
+l, r = 0, n + 1
 
-lpos, rpos = 1, 1e6 - 1
-l, r = 0, n - 1
-
-while l <= r:
-  if abs(a[l] - lpos) < abs(a[r] - rpos):
-    ans += abs(a[l] - lpos)
-    lpos = a[l]
+while n > 0:
+  if abs(a[l] - a[l + 1]) <= abs(a[r] - a[r - 1]):
+    ans = min(ans, abs(a[l] - a[l + 1]))
     l += 1
   else:
-    ans += abs(a[r] - rpos)
-    rpos = a[r]
+    ans = min(ans, abs(a[r] - a[r - 1]))
     r -= 1
 
-print(int(ans))
+  n -= 1
+
+print(ans)

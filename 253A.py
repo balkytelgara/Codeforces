@@ -3,24 +3,19 @@ with open("input.txt", "r") as f:
   f.close()
 
 n, m = map(int, lines[0].split())
+
 r = ""
 
-for i in range(n + m):
-  if n > 0 and m > 0:
-    if i % 2 == 0:
-      r += "B"
-      n -= 1
+def func(x, a, b):
+  s = [a] * (n + m)
+  for i in range(1, n + m, 2):
+    if x > 0:
+      s[i] = b
+      x -= 1
     else:
-      r += "G"
-      m -= 1
-  else:
-    if n > 0:
-      r += "B" * n
-      n = 0
-    else:
-      r += "G" * m
-      m = 0
+      break
 
-with open("output.txt", "w") as f:
-  f.write(r)
-  f.close()
+  return "".join(s)
+
+r = func(min(n, m), "G" if n <= m else "B", "B" if n <= m else "G")
+print(r, file=open("output.txt", "w"))

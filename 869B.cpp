@@ -2,21 +2,28 @@
 
 using namespace std;
 
+int ldfd(int a, int b) {
+    int last_digit = 1;
+
+    for (int i = b; i > a; --i) {
+        if (i % 10 == 0) {
+            continue;
+        }
+
+        last_digit = (last_digit * (i % 10)) % 10;
+
+        if (last_digit == 0) {
+            return 0;
+        }
+    }
+
+    return last_digit;
+}
+
 int main() {
-  long long a, b;
-  int ans;
+    int a, b;
+    cin >> a >> b;
+    cout << ldfd(a, b) << endl;
 
-  cin >> a >> b;
-
-  if (a - b >= 10)
-    cout << 0 << endl;
-  else {
-    ans = 1;
-    for (long long i = a + 1; i <= b; i++)
-      ans = (1LL * ans * (i % 10)) % 10;
-    
-    cout << ans << endl;
-  }
-
-  return 0;
+    return 0;
 }
