@@ -1,7 +1,7 @@
 a, b = map(int, input().split())
+r = 1
+while a != b and r:
+  a += 1
+  r = r * a % 10
 
-u = 1
-for i in range(b - a, b + 1):
-  u *= i
-
-print(u // a)
+print(r)
